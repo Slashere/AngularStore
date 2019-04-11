@@ -23,7 +23,7 @@ export class RestDataSource {
   saveOrder(order: Order): Observable<Order> {
     return this.sendRequest('POST', 'orders', order);
   }
-  private sendRequest(method: string, url: string, body?: Product | Order): Observable<any> {
+  private sendRequest(method: string, url: string, body?: object): Observable<any> {
     return this.http.request(method, this.baseUrl + url, body);
   }
 }
