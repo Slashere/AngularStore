@@ -5,12 +5,16 @@ import { StaticDatasource } from './static.datasource';
 import { Cart } from './cart.model';
 import { Order } from './order.model';
 import { OrderRepository } from './order.repository';
+import { RestDataSource } from './rest.datasource';
+import { HttpClientModule } from '@angular/common/http';
 var ModelModule = /** @class */ (function () {
     function ModelModule() {
     }
     ModelModule = tslib_1.__decorate([
         NgModule({
-            providers: [ProductRepository, StaticDatasource, Cart, Order, OrderRepository]
+            imports: [HttpClientModule],
+            providers: [ProductRepository, StaticDatasource, Cart, Order, OrderRepository,
+                { provide: StaticDatasource, useClass: RestDataSource }]
         })
     ], ModelModule);
     return ModelModule;

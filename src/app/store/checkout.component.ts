@@ -9,7 +9,21 @@ import {OrderRepository} from '../model/order.repository';
 })
 
 export class CheckoutComponent {
-  orderSent: boolean = true;
+  orderSent: boolean = false;
   submitted: boolean = false;
 
+  constructor(public repository: OrderRepository,
+              public order: Order) {
+  }
+
+  submitOrder(form: NgForm) {
+    this.submitted = true;
+    if (form.valid) {
+      this.repository.saveOrder(this.order).subscribe(order => {
+        this.order.clear();
+        this.orderSent = true;
+        this.submitted = false;
+      });
+    }
+  }
 }

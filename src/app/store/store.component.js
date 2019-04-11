@@ -39,10 +39,6 @@ var StoreComponent = /** @class */ (function () {
         this.changePage(1);
     };
     Object.defineProperty(StoreComponent.prototype, "pageCount", {
-        // get pageNumbers(): number[] {
-        //   return Array(Math.ceil(this.repository.getProducts(this.selectedCategory).length / this.productsPerPage))
-        //     .fill(0).map((x, i) => i + 1);
-        // }
         get: function () {
             return Math.ceil(this.repository
                 .getProducts(this.selectedCategory).length / this.productsPerPage);
